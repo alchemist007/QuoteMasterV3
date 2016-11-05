@@ -8,10 +8,10 @@ function getQuotes(res) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
-            res.send(quotes);
+            res.send(err);
         }
 
-        res.json(todos); // return all todos in JSON format
+        res.json(quotes); // return all todos in JSON format
     });
 };
 
@@ -29,30 +29,44 @@ module.exports = function(app){
 	});
 
     //add quote
-    app.post('/api/quotes', function(){
+    app.post('/api/quotes', function(req,res){
 
         //create a quote, information comes from AJAx reques from Angular
         quoteModel.create({
-              quote_id    : req.cookies.quote_id,
-              quote    : req.body.quote,
-              author: req.body.author,
+              //quote_id    : req.cookies.quote_id,
+              text    : req.body.text,
+              //author: req.body.author,
               updated_at : Date.now()            
 
         }, function(err, quote){
             if(err) res.send(err);
 
-            res.redirect('/')
+            // get and return all the todos after you create another
+            getQuotes(res);
 
         });
     });
+
     //delete quote
+    app.delete('/api/quotes/:quote_id', function (req, res) {
+
+        quoteModel.remove({
+            _id: req.params.quote_id
+
+        }, function (err, quote) {
+            if (err)
+                res.send(err);
+
+            getQuotes(res);
+        });
+    });
 
     //edit quote
 
 
     //application
-    app.get('*' function(res,req){
+    app.get('*', function(res,req){
         res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    })
+    });
 
 };
