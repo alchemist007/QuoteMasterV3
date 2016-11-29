@@ -42,6 +42,27 @@
 
 		<br>
 
+		<!-- FORM TO CREATE TODOS -->
+		<div id="quote-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Enter new Quote" ng-model="quoteText.text">
+
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center" placeholder="Enter Author" ng-model="quoteAuthor.text">
+
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createQuote()">Add</button>
+				</form>
+			</div>
+		</div>
+
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
@@ -50,14 +71,12 @@
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
 				<div  ng-repeat="quote in quotes">
-
-					<label>
-						<input type="checkbox" ng-click="deleteQuote(quote._id)">{{ quote.text }}
-						
-						 -Author
-					</label>
+						<p>{{ quote.text }}</p> 
+						<p>- {{ quote.author}}</p>	
+						<button type="submit" class="btn btn-primary btn-xs" ng-click="deleteQuote(quote._id)">Delete
+						</button>
 				</div>
-				
+
 
 				
 
@@ -70,23 +89,7 @@
 
 
 		
-		<!-- FORM TO CREATE TODOS -->
-		<div id="quote-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="Enter new Quote" ng-model="formData.text">
-
-
-					</div>
-
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createQuote()">Add</button>
-				</form>
-			</div>
-		</div>	
+	
 		
 
 

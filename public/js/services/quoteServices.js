@@ -12,8 +12,8 @@ angular.module('quoteServices', [])
 			get : function() {
 				return $http.get('/api/quotes');
 			},
-			create : function(quoteData) {
-				return $http.post('/api/quotes', quoteData);
+			create : function(quoteText, quoteAuthor) {
+				return $http.post('/api/quotes', quoteText, quoteAuthor);
 			},
 			delete : function(id) {
 				return $http.delete('/api/quotes/' + id);

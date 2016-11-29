@@ -35,7 +35,7 @@ module.exports = function(app){
         quoteModel.create({
               //quote_id    : req.cookies.quote_id,
               text    : req.body.text,
-              //author: req.body.author,
+              author: req.body.text,
               updated_at : Date.now()            
 
         }, function(err, quote){
