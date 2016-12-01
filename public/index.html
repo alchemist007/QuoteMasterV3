@@ -47,14 +47,14 @@
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<form>
 					<div class="form-group">
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="Enter new Quote" ng-model="quoteText.text">
-
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR 
-						<input type="text" class="form-control input-lg text-center" placeholder="Enter Author" ng-model="quoteAuthor.text">-->
-
+							<label>
+							<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+							<input type="text" class="form-control input-lg text-center" placeholder="Enter new Quote" ng-model="quoteToPost.text">
+							</label>
+							<label>
+							<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+							<input type="text" class="form-control input-lg text-center" placeholder="Enter Author" ng-model="quoteToPost.author">
+							</label>
 					</div>
 
 					<!-- createToDo() WILL CREATE NEW TODOS -->

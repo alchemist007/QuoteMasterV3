@@ -30,12 +30,13 @@ module.exports = function(app){
 
     //add quote
     app.post('/api/quotes', function(req,res){
-
+        console.log(req.body);
         //create a quote, information comes from AJAx reques from Angular
         quoteModel.create({
               //quote_id    : req.cookies.quote_id,
-              text    : req.body.text,
-              author: req.body.text,
+
+              text    : req.body.text.text,
+              author: req.body.text.author,
               updated_at : Date.now()            
 
         }, function(err, quote){
@@ -63,10 +64,10 @@ module.exports = function(app){
 
     //edit quote
 
-
+    /*
     //application
     app.get('*', function(res,req){
         res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
+    });*/
 
 };
