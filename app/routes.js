@@ -63,10 +63,11 @@ module.exports = function(app){
 
     //edit quote
 
-
+    /*
     //application
     app.get('*', function(res,req){
         res.sendFile(__dirname + '/public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
     });
+    */
 
 };
