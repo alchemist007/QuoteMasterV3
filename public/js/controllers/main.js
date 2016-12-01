@@ -2,7 +2,11 @@ angular.module('quoteController', [])
 
 	// inject the Todo service factory into our controller
 	.controller('mainController', ['$scope','$http','Quotes', function($scope, $http, Quotes) {
-		$scope.formData = {};
+		$scope.quoteText = {};
+		$scope.quoteAuthor = {}; 
+
+		$scope.quoteToPost = {text: '', author: ''};
+		
 		
 		$scope.loading = true;
 
@@ -19,20 +23,24 @@ angular.module('quoteController', [])
 		// CREATE ==================================================================
 		// when submitting the add form, send the text to the node API
 		$scope.createQuote = function() {
+			
 
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
-			if ($scope.formData.text != undefined) {
+			if ($scope.quoteToPost.text != undefined && $scope.quoteToPost.author != undefined) {
 				$scope.loading = true;
 
 				// call the create function from our service (returns a promise object)
-				Quotes.create($scope.formData)
+
+				Quotes.create($scope.quoteToPost)
 
 					// if successful creation, call our get function to get all the new todos
 					.success(function(data) {
 						$scope.loading = false;
-						$scope.formData = {}; // clear the form so our user is ready to enter another
-						
+						$scope.quoteToPost.text = ''; // clear the form so our user is ready to enter another
+						$scope.quoteToPost.author = '';
+						//$scope.quoteToPost = {};
+						//$scope.quoteToPost = {}
 						$scope.quotes = data; // assign our new list of todos
 					});
 			}

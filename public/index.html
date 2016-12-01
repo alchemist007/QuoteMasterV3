@@ -40,6 +40,29 @@
 			<h2 align='center'>A Collections of growing quotes {{quotes.length}}</h2>
 		</div> 
 
+		<br><!--remove these later-->
+
+		<!-- FORM TO CREATE TODOS -->
+		<div id="quote-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+							<label>
+							<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+							<input type="text" class="form-control input-lg text-center" placeholder="Enter new Quote" ng-model="quoteToPost.text">
+							</label>
+							<label>
+							<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+							<input type="text" class="form-control input-lg text-center" placeholder="Enter Author" ng-model="quoteToPost.author">
+							</label>
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createQuote()">Add</button>
+				</form>
+			</div>
+		</div>
+
 		<br>
 
 		<!-- TODO LIST -->
@@ -49,15 +72,13 @@
 				
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div  ng-repeat="quote in quotes">
-
-					<label>
-						<input type="checkbox" ng-click="deleteQuote(quote._id)">{{ quote.text }}
-						
-						 -Author
-					</label>
+				<div class = "well" ng-repeat="quote in quotes">
+						<p align='center'>{{ quote.text }}</p> 
+						<p align='center'> {{ quote.author}}</p>	
+						<button type="submit" class="btn btn-default btn-xs" ng-click="deleteQuote(quote._id)">Delete
+						</button>
 				</div>
-				
+
 
 				
 
@@ -70,23 +91,7 @@
 
 
 		
-		<!-- FORM TO CREATE TODOS -->
-		<div id="quote-form" class="row">
-			<div class="col-sm-8 col-sm-offset-2 text-center">
-				<form>
-					<div class="form-group">
-
-						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-						<input type="text" class="form-control input-lg text-center" placeholder="Enter new Quote" ng-model="formData.text">
-
-
-					</div>
-
-					<!-- createToDo() WILL CREATE NEW TODOS -->
-					<button type="submit" class="btn btn-primary btn-lg" ng-click="createQuote()">Add</button>
-				</form>
-			</div>
-		</div>	
+	
 		
 
 
